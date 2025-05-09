@@ -18,10 +18,15 @@ RUN \
   apt-get update && \
   apt-get install -y \
     git \
+    python3 \
+    python3-pip \
+    python3-venv \
     libatomic1 \
     nano \
     net-tools \
     sudo && \
+  ln -sf /usr/bin/python3 /usr/bin/python && \
+  ln -sf /usr/bin/pip3 /usr/bin/pip && \
   echo "**** install code-server ****" && \
   if [ -z ${CODE_RELEASE+x} ]; then \
     CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/coder/code-server/releases/latest \
